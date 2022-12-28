@@ -26,6 +26,10 @@ app.use('/general', generalRoutes);
 app.use('/management', managementRoutes);
 app.use('/sales', salesRoutes);
 
+// data import
+import User from './models/User.js';
+import { dataUser } from './data/index.js';
+
 // MONGOOSE SETUP
 const PORT = process.env.PORT || 9000;
 mongoose
@@ -35,5 +39,8 @@ mongoose
   })
   .then(() => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+
+    // add the data one time
+    User.insertMany(dataUser);
   })
   .catch((error) => console.log(`${error} did not connect`));
