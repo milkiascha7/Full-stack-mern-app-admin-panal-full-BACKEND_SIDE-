@@ -28,7 +28,9 @@ app.use('/sales', salesRoutes);
 
 // data import
 import User from './models/User.js';
-import { dataUser } from './data/index.js';
+import Product from './models/Product.js';
+import ProductStat from './models/ProductStat.js';
+import { dataUser, dataProduct, dataProductStat } from './data/index.js';
 
 // MONGOOSE SETUP
 const PORT = process.env.PORT || 9000;
@@ -41,6 +43,8 @@ mongoose
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
     // add the data one time
-    User.insertMany(dataUser);
+    // User.insertMany(dataUser);
+    // Product.insertMany(dataProduct);
+    // ProductStat.insertMany(dataProductStat);
   })
   .catch((error) => console.log(`${error} did not connect`));
